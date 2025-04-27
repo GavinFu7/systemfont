@@ -16,7 +16,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<String> _platformVersion = [];
+  List<String> _fonts = [];
 
   @override
   void initState() {
@@ -26,14 +26,14 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    List<String> platformVersion;
+    List<String> fonts;
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      platformVersion = await systemFont.getFontList();
+      fonts = await getSystemFontList();
 
     } on PlatformException {
-      platformVersion = [];
+      fonts = [];
     }
 
     // If the widget was removed from the tree while the asynchronous platform
@@ -42,7 +42,7 @@ class _MyAppState extends State<MyApp> {
     if (!mounted) return;
 
     setState(() {
-      _platformVersion = platformVersion;
+      _fonts = fonts;
     });
   }
 
@@ -54,7 +54,7 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text(_platformVersion.toString()),
+          child: Text(_fonts.toString()),
         ),
       ),
     );
