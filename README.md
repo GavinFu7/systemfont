@@ -1,6 +1,8 @@
 # systemfont
 
-A new Flutter plugin project.
+取得iOS設備中的字體列表
+
+Get fonts list in iOS device
 
 ## Getting Started
 
