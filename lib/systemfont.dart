@@ -3,5 +3,5 @@ import 'package:flutter/services.dart';
 
 Future<List<String>> getSystemFontList() async {
   final fontList = await MethodChannel('systemFont').invokeMethod<List<Object?>>('getAllFonts');
-  return fontList?.map((e) => e.toString()).toList() ?? [];
+  return fontList?.cast<String>() ?? [];
 }
